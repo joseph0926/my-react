@@ -1,0 +1,26 @@
+{
+  "name": "my-react",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
+  "keywords": [],
+  "author": "joseph0926",
+  "license": "ISC",
+  "packageManager": "pnpm@10.5.2",
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}
