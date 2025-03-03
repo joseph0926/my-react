@@ -15,8 +15,9 @@ export type TextProps = { nodeValue: string };
 /** VNode - 버츄얼 노드 타입 */
 export type VNode<T extends VNodeType> =
   | (T extends "TEXT_ELEMENT"
-      ? { props: TextProps; children: null }
+      ? { type: "TEXT_ELEMENT"; props: TextProps; children: null }
       : {
+          type: ElementType;
           props: ElementProps<Extract<T, ElementType>>;
           children: VNode<any>[] | null;
         })

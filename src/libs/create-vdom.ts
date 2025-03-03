@@ -1,4 +1,4 @@
-import type { VNodeType, VNode } from "@/types/dom.type";
+import type { VNodeType, VNode, ElementType } from "@/types/dom.type";
 
 /**
  * createVDom
@@ -18,12 +18,14 @@ export function createVNodeFromDOM(node: Node): VNode<VNodeType> {
     }
 
     return {
+      type: "TEXT_ELEMENT",
       props: { nodeValue },
       children: null,
     };
   }
 
   const element = node as HTMLElement;
+  const type = element.tagName.toLowerCase() as ElementType;
   let props: Record<string, string> = {};
 
   for (const attr of Array.from(element.attributes)) {
@@ -35,6 +37,7 @@ export function createVNodeFromDOM(node: Node): VNode<VNodeType> {
     .filter((child): child is VNode<any> => child !== null);
 
   return {
+    type,
     props,
     children: childrenNodes.length > 0 ? childrenNodes : null,
   };
