@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "vite"
   },
   "keywords": [],
   "author": "joseph0926",
@@ -15,6 +15,7 @@
     "node": ">=22"
   },
   "devDependencies": {
+    "@types/node": "^22.13.8",
     "tsx": "^4.19.3",
     "typescript": "^5.8.2",
     "vite": "^6.2.0"
