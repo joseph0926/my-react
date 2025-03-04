@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["@babel/preset-env", { "targets": "defaults" }],
+    [
+      "@babel/preset-react",
+      // pragma를 직접 지정: React.createElement 대신 직접 만든 createElement가 호출됨
+      { "pragma": "createElement", "pragmaFrag": "Fragment" }
+    ],
+    "@babel/preset-typescript"
+  ]
+}
