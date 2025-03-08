@@ -3,22 +3,18 @@ import { __DEV__ } from "../constants";
 import { REACT_ELEMENT_TYPE } from "../symbol/react.symbol";
 
 /**
- * Ensure that every element either is passed in a static location, in an
- * array with an explicit keys property defined, or in an object literal
- * with valid key property.
+ * validateChildKeys
  *
- * @internal
+ * @description 자식 컴포넌트가 키에 대한 유효성 검사 체크하는 함수
  * @param {ReactNode} node 자식 React 엘리먼트
- * @param {*} parentType 자식 React 엘리먼트의 부모 React 엘리먼트 태그
+ * @param {ReactElementType} _parentType 자식 React 엘리먼트의 부모 React 엘리먼트 태그
  */
 export function validateChildKeys(
   node: ReactNode,
   _parentType: ReactElementType
 ) {
   if (__DEV__) {
-    // With owner stacks is, no warnings happens. All we do is
-    // mark elements as being in a valid static child position so they
-    // don't need keys.
+    // default가 validated된 상태 - 동적인 엘리먼트가 아니라면 key가 없어도 무방
     if (isValidElement(node)) {
       if (node._store) {
         node._store.validated = 1;
