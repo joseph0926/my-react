@@ -1,51 +1,24 @@
 /**
- * Represents any user-defined component, either as a function or a class.
+ * 사용자가 정의한 함수형 컴포넌트를 나타냅니다.
  *
- * Similar to {@link ComponentType}, but without extra properties like
- * {@link FunctionComponent.defaultProps defaultProps } and
- * {@link ComponentClass.contextTypes contextTypes}.
- *
- * @template P The props the component accepts.
+ * @template P 컴포넌트가 받을 수 있는 props의 타입입니다.
  */
-type JSXElementConstructor<P> =
-  | ((
-      props: P,
-      /**
-       * @deprecated
-       *
-       * @see {@link https://legacy.reactjs.org/docs/legacy-context.html#referencing-context-in-stateless-function-components React Docs}
-       */
-      deprecatedLegacyContext?: any
-    ) => ReactNode)
-  | (new (
-      props: P,
-      /**
-       * @deprecated
-       *
-       * @see {@link https://legacy.reactjs.org/docs/legacy-context.html#referencing-context-in-lifecycle-methods React Docs}
-       */
-      deprecatedLegacyContext?: any
-    ) => Component<any, any>);
+type JSXElementConstructor<P> = (props: P) => ReactNode;
 
 /**
- * Represents a JSX element.
+ * JSX 요소를 나타냅니다.
  *
- * Where {@link ReactNode} represents everything that can be rendered, `ReactElement`
- * only represents JSX.
+ * {@link ReactNode}가 렌더링 가능한 모든 요소를 나타내는 반면,
+ * `ReactElement`는 JSX로 생성된 요소만을 나타냅니다.
  *
- * @template P The type of the props object
- * @template T The type of the component or tag
+ * @template P props의 타입
+ * @template T 컴포넌트 또는 태그의 타입
  *
- * @example
- *
- * ```tsx
- * const element: ReactElement = <div />;
- * ```
  */
 interface ReactElement<
   P = any,
-  T extends string | JSXElementConstructor<any> =
-    | string
+  T extends keyof HTMLElementTagNameMap | JSXElementConstructor<any> =
+    | keyof HTMLElementTagNameMap
     | JSXElementConstructor<any>
 > {
   type: T;
@@ -54,35 +27,11 @@ interface ReactElement<
 }
 
 /**
- * Represents all of the things React can render.
+ * React가 렌더링 가능한 모든 타입을 나타냅니다.
  *
- * Where {@link ReactElement} only represents JSX, `ReactNode` represents everything that can be rendered.
- *
- * @see {@link https://react-typescript-cheatsheet.netlify.app/docs/react-types/reactnode/ React TypeScript Cheatsheet}
- *
- * @example
- *
- * ```tsx
- * // Typing children
- * type Props = { children: ReactNode }
- *
- * const Component = ({ children }: Props) => <div>{children}</div>
- *
- * <Component>hello</Component>
- * ```
- *
- * @example
- *
- * ```tsx
- * // Typing a custom element
- * type Props = { customElement: ReactNode }
- *
- * const Component = ({ customElement }: Props) => <div>{customElement}</div>
- *
- * <Component customElement={<div>hello</div>} />
- * ```
+ * {@link ReactElement}가 JSX 요소만 나타내는 반면,
+ * `ReactNode`는 렌더링 가능한 모든 요소를 나타냅니다.
  */
-// non-thenables need to be kept in sync with AwaitedReactNode
 type ReactNode =
   | ReactElement
   | string
@@ -91,5 +40,11 @@ type ReactNode =
   | ReactPortal
   | boolean
   | null
-  | undefined
-  | DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_REACT_NODES[keyof DO_NOT_USE_OR_YOU_WILL_BE_FIRED_EXPERIMENTAL_REACT_NODES];
+  | undefined;
+
+/**
+ * 포털을 나타내는 타입입니다.
+ */
+interface ReactPortal extends ReactElement {
+  children: ReactNode;
+}
