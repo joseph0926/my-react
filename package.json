@@ -22,6 +22,7 @@
     "@babel/preset-react": "^7.26.3",
     "@babel/preset-typescript": "^7.26.0",
     "@types/node": "^22.13.8",
+    "@vitejs/plugin-react": "^4.3.4",
     "@vitest/ui": "^3.0.7",
     "jsdom": "^26.0.0",
     "tsx": "^4.19.3",
