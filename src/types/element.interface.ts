@@ -46,6 +46,11 @@ export interface ReactElement<
    * 내부적으로만 사용하는 프로퍼티로 개발 환경에서 요소의 상태 관리 용도로 쓰입니다.
    */
   _store?: ReactElementStore;
+
+  /**
+   * React 요소임을 나타내는 특별한 심볼 프로퍼티입니다.
+   */
+  $$typeof?: symbol;
 }
 
 /**
