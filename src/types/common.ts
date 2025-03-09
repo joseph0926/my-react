@@ -32,3 +32,22 @@ export type ReactNode =
   | undefined
   | Iterable<ReactNode>
   | { type: ReactElementType; props: any; key: Key; [prop: string]: any };
+
+/**
+ * A readonly ref container where {@link current} cannot be mutated.
+ *
+ * Created by {@link createRef}, or {@link useRef} when passed `null`.
+ *
+ * @template T The type of the ref's value.
+ *
+ * @example
+ *
+ * ```tsx
+ * const ref = createRef<HTMLDivElement>();
+ *
+ * ref.current = document.createElement('div'); // Error
+ * ```
+ */
+export interface RefObject<T> {
+  readonly current: T | null;
+}

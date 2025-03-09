@@ -1,4 +1,4 @@
-import type { ReactElementType, Key, ReactNode } from "./common";
+import type { ReactElementType, Key, ReactNode, RefObject } from "./common";
 
 /**
  * React 내부에서만 사용하는 프로퍼티 (_store)를 정의한 인터페이스입니다.
@@ -51,6 +51,8 @@ export interface ReactElement<
    * React 요소임을 나타내는 특별한 심볼 프로퍼티입니다.
    */
   $$typeof?: symbol;
+
+  ref?: RefObject<T>;
 }
 
 /**

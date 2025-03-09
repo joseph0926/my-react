@@ -81,14 +81,5 @@ export function createElement(
   //   }
   // }
 
-  return ReactElement(
-    type,
-    key,
-    undefined,
-    undefined,
-    getOwner(),
-    props,
-    __DEV__ && Error("react-stack-top-frame"),
-    __DEV__ && createTask(getTaskName(type))
-  );
+  return ReactElement(type, key, props);
 }
