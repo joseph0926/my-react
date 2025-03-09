@@ -1,5 +1,5 @@
 import { REACT_ELEMENT_TYPE } from "@/shared/symbol/react.symbol";
-import { Key, ReactElementType } from "@/types/common";
+import { Key, ReactElementType, RefObject } from "@/types/common";
 import { ReactElement } from "@/types/element.interface";
 
 /**
@@ -7,14 +7,15 @@ import { ReactElement } from "@/types/element.interface";
  * @description 리액트 엘리먼트를 생성하는 팩토리 메서드
  * @param type
  * @param key
+ * @param ref
  * @param props
  */
 export function ReactElement(
   type: ReactElementType,
   key: Key,
+  ref: RefObject<any>,
   props: { [propName: string]: any }
 ) {
-  const ref = props.ref;
   let element: ReactElement;
 
   element = {

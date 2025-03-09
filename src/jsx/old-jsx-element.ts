@@ -32,6 +32,7 @@ export function createElement(
 
   let propName: string;
   let key: Key = null;
+  let ref = null;
   const props: { [propName: string]: any } = {};
 
   // config가 존재하면
@@ -40,10 +41,17 @@ export function createElement(
     if (hasValidKey(config)) {
       key = checkKeyStringCoercion(config.key);
     }
+    if (config.ref !== undefined) {
+      ref = config.ref;
+    }
 
     // 속성들중에 예약를 제외하고 props 객체로 할당
     for (propName in config) {
-      if (Object.hasOwn(config, propName) && propName !== "key") {
+      if (
+        Object.hasOwn(config, propName) &&
+        propName !== "key" &&
+        propName !== "ref"
+      ) {
         props[propName] = config[propName];
       }
     }
@@ -81,5 +89,5 @@ export function createElement(
   //   }
   // }
 
-  return ReactElement(type, key, props);
+  return ReactElement(type, key, ref, props);
 }
