@@ -7,8 +7,8 @@ import {
   hasValidKey,
   validateChildKeys,
 } from "@/shared/utils/validation";
-import type { Key, ReactElementType, ReactNode } from "@/types/common";
-import type { Config } from "@/types/element.interface";
+import type { Key, Config } from "@/types/common";
+import type { ReactElementType, ReactNode } from "@/types/react.type";
 
 /**
  * createElement
@@ -21,7 +21,7 @@ import type { Config } from "@/types/element.interface";
 export function createElement(
   type: ReactElementType,
   config: Config | null,
-  children: ReactNode
+  ..._children: ReactNode[]
 ) {
   // arguments[2]부터는 자식 컴포넌트 (0 => type, 1 => config)
   // 따라서 자식 요소를 모두 순회하면서 key 검증을 수행함
@@ -65,7 +65,7 @@ export function createElement(
   */
   const childrenLength = arguments.length - 2;
   if (childrenLength === 1) {
-    props.children = children;
+    props.children = arguments[2];
   } else if (childrenLength > 1) {
     const childArray = Array(childrenLength);
     for (let i = 0; i < childrenLength; i++) {

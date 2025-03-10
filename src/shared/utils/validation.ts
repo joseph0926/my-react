@@ -1,8 +1,11 @@
+import { Config } from "@/types/common";
 import { __DEV__ } from "../constants";
 import { REACT_ELEMENT_TYPE } from "../symbol/react.symbol";
-import type { ReactNode } from "@/types/react.type";
-import type { ReactElementType } from "@/types/common";
-import type { Config, ReactElement } from "@/types/element.interface";
+import type {
+  ReactElement,
+  ReactElementType,
+  ReactNode,
+} from "@/types/react.type";
 
 /**
  * validateChildKeys

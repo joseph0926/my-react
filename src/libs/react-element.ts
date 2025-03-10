@@ -1,6 +1,10 @@
 import { REACT_ELEMENT_TYPE } from "@/shared/symbol/react.symbol";
-import { Key, ReactElementType, RefObject } from "@/types/common";
-import { ReactElement } from "@/types/element.interface";
+import type { Key } from "@/types/common";
+import type {
+  ReactElementType,
+  RefObject,
+  ReactElement,
+} from "@/types/react.type";
 
 /**
  * ReactElement
