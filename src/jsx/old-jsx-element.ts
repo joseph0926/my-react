@@ -7,8 +7,12 @@ import {
   hasValidKey,
   validateChildKeys,
 } from "@/shared/utils/validation";
-import type { Key, Config } from "@/types/common";
-import type { ReactElementType, ReactNode } from "@/types/react.type";
+import type {
+  ReactElementType,
+  ReactNode,
+  Key,
+  Config,
+} from "@/types/old-react.type";
 
 /**
  * createElement

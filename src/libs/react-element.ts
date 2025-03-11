@@ -1,10 +1,10 @@
 import { REACT_ELEMENT_TYPE } from "@/shared/symbol/react.symbol";
-import type { Key } from "@/types/common";
 import type {
   ReactElementType,
   RefObject,
   ReactElement,
-} from "@/types/react.type";
+  Key,
+} from "@/types/old-react.type";
 
 /**
  * ReactElement
